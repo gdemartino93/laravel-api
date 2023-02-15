@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     use HasFactory;
-
+    protected $fillable = [
+        'name',
+        'description'
+    ];
     public function movies(){
         return $this-> belongsToMany(Movie :: class);
     }
