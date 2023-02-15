@@ -13,10 +13,10 @@ class Movie extends Model
         'year',
         'cashOut'
     ];
-    public function tags(){
+    public function tag(){
         return $this-> belongsToMany(Tag :: class);
     }
-    public function genres(){
-        return $this-> belongsTo('genres');
+    public function genre(){
+        return $this-> belongsTo(Genre :: class);
     }
 }

@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema :: table('genres', function(Blueprint $table){
-            $table -> foreignId('movie_id') -> constrained();
+        Schema :: table('movies', function(Blueprint $table){
+            $table -> foreignId('genre_id') -> constrained();
         });
 
         Schema :: table('movie_tag', function(Blueprint $table){
