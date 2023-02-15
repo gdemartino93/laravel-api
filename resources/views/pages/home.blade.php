@@ -10,7 +10,15 @@
         <h3 class="text-warning">{{$genre -> name}}</h3>
             @foreach ($genre -> movies as $movie)
                 <div class="myItem flex-column">
-                  asd
+                    <h3 class="fw-bold">{{$movie -> name}}</h3>
+                    <div>
+                        <span class="fw-bold text-info">Cashout:</span>
+                        <span>{{number_format($movie -> cashOut,0,'.')}} &euro;</span>
+                    </div>
+                    <div>
+                        <span class="fw-bold text-info">Year:</span>
+                        <span>{{$movie -> date}} </span>
+                    </div>
                 </div>
             @endforeach
   
