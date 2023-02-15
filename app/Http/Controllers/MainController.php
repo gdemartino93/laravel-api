@@ -27,4 +27,24 @@ class MainController extends Controller
         return view('pages.movie.createnew',compact('genres','tags'));
 
     }
+    public function store(Request $request){
+        $data = $request -> validate([
+            'name' => 'required|max:32',
+            'date' => 'required',
+            'cashOut' => 'required',
+            'genre' => 'required',
+            'tags' => 'required|array'
+        ]);
+        
+
+        $movie = Movie:: make($data);
+
+        $genre = Genre:: find($data['genre']);
+ 
+        $movie -> genre()-> associate($genre);
+
+        $movie-> save();
+  
+        return redirect()-> route('home');
+    }
 }

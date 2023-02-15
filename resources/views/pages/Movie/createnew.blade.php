@@ -15,7 +15,7 @@
             </ul>
         </div>
     @endif
-    <form action="" method="POST" class="d-flex flex-column col-4 mx-auto">
+    <form action="{{route('movie.addnew')}}" method="POST" class="d-flex flex-column col-4 mx-auto">
         @csrf
         <div class="input-group input-group-sm mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">Name:</span>
@@ -30,7 +30,7 @@
             <input name="cashOut" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
         </div>
 
-        <select name="typology" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+        <select name="genre" class="form-select" id="floatingSelect" aria-label="Floating label select example">
             <option selected>Select genre</option>
             @foreach ($genres as $genre)
                 <option name="genre" value="{{$genre -> id}}">{{$genre -> name}}</option>     

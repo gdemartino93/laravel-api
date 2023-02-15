@@ -22,3 +22,6 @@ Route :: get ('/movies', [MainController :: class , 'movies'])
 // redirect to form for create a new movie
 Route :: get('/movies/create' , [MainController :: class, 'create'])
     -> name('movie.create');
+// crea nuovo film
+Route :: post('/movies/create' , [MainController :: class, 'store'])
+    -> name('movie.addnew');
