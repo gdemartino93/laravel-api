@@ -4,5 +4,5 @@
     <title>Home Page</title>
 @endsection
 @section('contents')
-    asd
+ 
 @endsection
