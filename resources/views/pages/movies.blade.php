@@ -22,6 +22,14 @@
                         <span class="fw-bold text-info">Genre:</span>
                         <span>{{$movie -> genre -> name}} &euro;</span>
                     </div>
+                    <div class="d-flex gap-2 align-items-center">
+                        <a href="">
+                            <i class="fa-regular fa-square-minus text-danger"></i>
+                        </a>
+                        <a href="">
+                            <i class="fa-solid fa-pen-to-square text-warning"></i>
+                        </a>
+                    </div>
                 </article> 
             @endforeach
 @endsection
