@@ -14,6 +14,11 @@ return new class extends Migration
         Schema :: table('genres', function(Blueprint $table){
             $table -> foreignId('movie_id') -> constrained();
         });
+
+        Schema :: table('movie_tag', function(Blueprint $table){
+            $table -> foreignId('movie_id') -> constrained();
+            $table -> foreignId('tag_id') -> constrained();
+        });
     }
 
     /**
