@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 
 Route :: get('/', [MainController :: class , 'home'])
     -> name('home');
+Route :: get ('/movies', [MainController :: class , 'movies'])
+    -> name('movies');
