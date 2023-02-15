@@ -3,7 +3,7 @@
        <a href="{{route('home')}}">
           <i class="fa-solid fa-house fs-2"></i>
        </a>
-       <a href="" class="mx-2">
+       <a href="{{route('movie.create')}}" class="mx-2">
           <i class="fa-solid fa-plus fs-2"></i>
        </a>
     </div>

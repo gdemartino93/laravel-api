@@ -18,3 +18,7 @@ Route :: get('/', [MainController :: class , 'home'])
     -> name('home');
 Route :: get ('/movies', [MainController :: class , 'movies'])
     -> name('movies');
+
+// redirect to form for create a new movie
+Route :: get('/movies/create' , [MainController :: class, 'create'])
+    -> name('movie.create');
