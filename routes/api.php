@@ -19,4 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route :: get('/v1/test', [ApiController :: class, 'allMovies']);
+Route :: get('/v1/movies', [ApiController :: class, 'allMovies']);

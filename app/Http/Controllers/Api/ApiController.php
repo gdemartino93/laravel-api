@@ -9,9 +9,10 @@ use Illuminate\Http\Request;
 class ApiController extends Controller
 {
     public function allMovies(){
-        $movies = Movie :: with('genre','tag') -> paginate(1);
+        $movies = Movie :: with('genre','tag') -> get();
         return response() -> json([
-            'data' => $movies
+            'success' => true,
+            'response' => $movies
         ]);
     }
 }
