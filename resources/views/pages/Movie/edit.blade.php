@@ -15,7 +15,7 @@
             </ul>
         </div>
     @endif
-    <form action="" method="POST" class="d-flex flex-column col-4 mx-auto">
+    <form action="{{route('movie.update', $movie)}}" method="POST" class="d-flex flex-column col-4 mx-auto">
         @csrf
         <div class="input-group input-group-sm mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">Name:</span>

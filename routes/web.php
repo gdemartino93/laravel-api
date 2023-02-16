@@ -29,3 +29,6 @@ Route :: post('/movies/create' , [MainController :: class, 'store'])
     // redirect to edit page
 Route :: get('/movies/edit/{movie}',[MainController :: class, 'edit'])
     ->name('movie.edit');
+
+Route :: post('/movies/edit/{movie}',[MainController :: class , 'update'])
+    ->name('movie.update');
