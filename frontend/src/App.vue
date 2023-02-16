@@ -1,8 +1,10 @@
 <script >
-import AppHeader from './components/AppHeader.vue'
+import AppHeader from './components/AppHeader.vue';
+import AppMain from './components/AppMain.vue';
+
 
 export default{
-  components :{ AppHeader} ,
+  components :{ AppHeader , AppMain} ,
   data(){
     return{
       title : "My Minimal Shop"
@@ -16,7 +18,8 @@ export default{
     <AppHeader :title="title" />
   </header>
   <main>
-    
+    <AppMain />
+    zxc
   </main>
 
 </template>
