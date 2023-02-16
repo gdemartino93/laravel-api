@@ -28,7 +28,8 @@
         url: "http://127.0.0.1:8000/api/v1/movies",
         movies: [],
         error: false,
-        fullPage: true
+        fullPage: true,
+        currentPage :undefined ,
       };
     },
     components: {
@@ -42,10 +43,12 @@
         this.isLoading = false;
         axios.get(this.url)
           .then(res => {
-            console.log(res.data.response.data);
+    
             this.movies = res.data.response.data;
             this.error = false;
             this.isLoading = false;
+            this.currentPage = res.data.response.current_page;
+            console.log(this.currentPage);
           })
           .catch(err => {
             console.log(err);
@@ -56,7 +59,7 @@
     },
     mounted() {
       this.fetchData();
-      console.log(this.movies.data);
+     
     }
   };
   </script>
