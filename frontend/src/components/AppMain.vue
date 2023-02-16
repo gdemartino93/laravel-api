@@ -1,61 +1,62 @@
 <template>
-    <div v-if="error == false">
-        <h1 class="text-danger">Film</h1>
-        <div v-for="(movie,index) in movies" :key="index">
-        <Movie :movie="movie"  />
+    <div>
+      <h1 class="text-danger">Film</h1>
+      <div v-if="error === false">
+        <div v-for="(movie, index) in movies" :key="index">
+          <Movie :movie="movie" />
         </div>
-    </div>
-    <div v-else>
+      </div>
+      <div v-else>
         <ErrorApi />
-
+      </div>
+      <Loading :active="isLoading" :can-cancel="true" :on-cancel="onCancel" :is-full-page="fullPage" />
     </div>
-
-
-</template>
-
-<script>
-import axios from 'axios';
-import Movie from '../components/Movie.vue'
-import ErrorApi from '../components/ErrorApi.vue'
-
-
-    export default {
+  </template>
+  
+  <script>
+  import Loading from 'vue-loading-overlay';
+  import 'vue-loading-overlay/dist/css/index.css';
+  import axios from 'axios';
+  import Movie from '../components/Movie.vue'
+  import ErrorApi from '../components/ErrorApi.vue'
+  
+  export default {
     data() {
-        return {
-
-            url: "http://127.0.0.1:8000/api/v1/movies",
-            movies: [],
-            success: undefined,
-            error : false
-        };
-
+      return {
+        isLoading: false,
+        url: "http://127.0.0.1:8000/api/v1/movies",
+        movies: [],
+        error: false,
+        fullPage: true
+      };
     },
-    components : {
-        Movie,
-        ErrorApi
-    },  
+    components: {
+      Movie,
+      ErrorApi,
+      Loading
+    },
     methods: {
-        fetchData() {
-            axios.get(this.url)
-                .then(res => (this.movies = res.data.response),
-                        this.error = false)
-                .catch(err => {
-                    console.log(err);
-                    // ho dichiarato questa variabile perchè essendo una promise non posso usare direttamente il this
-                    let error = this.error;
-                    this.error = true;
-                }
-
-                );
-        },
+      fetchData() {
+        this.isLoading = true;
+        axios.get(this.url)
+          .then(res => {
+            this.movies = res.data.response;
+            this.error = false;
+            this.isLoading = false;
+          })
+          .catch(err => {
+            console.log(err);
+            this.error = true;
+            this.isLoading = false;
+          });
+      },
     },
     mounted() {
-        this.fetchData();
-    },
-
-}
-</script>
-
-<style lang="scss" scoped>
-
-</style>
+      this.fetchData();
+    }
+  };
+  </script>
+  
+  <style lang="scss" scoped>
+  </style>
+  

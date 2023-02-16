@@ -25,7 +25,7 @@ export default {
     </div>
     <div class="col-8">
         <a href="http://localhost:5174/">
-            <h1>My minimal Shop</h1>
+            <h1>{{title}}</h1>
         </a>
     </div>
     <div class="col-2">
