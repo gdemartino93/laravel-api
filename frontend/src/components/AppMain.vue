@@ -5,7 +5,10 @@
         <Movie :movie="movie"  />
         </div>
     </div>
-    <ErrorApi v-else />
+    <div v-else>
+        <ErrorApi />
+
+    </div>
 
 
 </template>
@@ -20,7 +23,7 @@ import ErrorApi from '../components/ErrorApi.vue'
     data() {
         return {
 
-            url: "http://127.0.0.1:1/movies",
+            url: "http://127.0.0.1:8000/api/v1/movies",
             movies: [],
             success: undefined,
             error : false
@@ -34,9 +37,14 @@ import ErrorApi from '../components/ErrorApi.vue'
     methods: {
         fetchData() {
             axios.get(this.url)
-                .then(res => (this.movies = res.data.response))
-                .catch(err => console.log(err),
-                        this.error = true
+                .then(res => (this.movies = res.data.response),
+                        this.error = false)
+                .catch(err => {
+                    console.log(err);
+                    // ho dichiarato questa variabile perchè essendo una promise non posso usare direttamente il this
+                    let error = this.error;
+                    this.error = true;
+                }
 
                 );
         },
