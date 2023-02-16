@@ -73,4 +73,11 @@ class MainController extends Controller
 
         return redirect() -> route('home');
     }
+
+    public function delete(Movie $movie){
+        $movie ->tag()->sync([]);
+        $movie-> delete();
+
+        return redirect()-> route('home');
+    }
 }

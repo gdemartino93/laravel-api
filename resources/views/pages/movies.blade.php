@@ -23,7 +23,7 @@
                         <span>{{$movie -> genre -> name}} &euro;</span>
                     </div>
                     <div class="d-flex gap-2 align-items-center">
-                        <a href="">
+                        <a href="{{route('movie.delete', $movie)}}">
                             <i class="fa-regular fa-square-minus text-danger"></i>
                         </a>
                         <a href="{{route('movie.edit' , $movie)}}">
