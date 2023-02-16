@@ -1,6 +1,6 @@
 <template>
     
-    <article class="myItem d-flex flex-column">
+    <article class="myItem d-flex flex-column col-md-6 col-lg-8">
          <h3 class="fw-bold">{{ movie.name }}</h3>  
          <div>
              <span class="fw-bold text-info">Date:</span>
@@ -36,6 +36,9 @@
 
 <style>
 span{
+    color: white;
+}
+h3{
     color: white;
 }
 </style>
