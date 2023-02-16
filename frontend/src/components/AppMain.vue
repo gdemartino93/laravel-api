@@ -3,7 +3,7 @@
       <h1 class="text-danger">Film</h1>
       <div v-if="error === false">
         <div v-for="(movie, index) in movies" :key="index">
-          <Movie :movie="movie" />
+            <Movie :movie="movie" />
         </div>
       </div>
       <div v-else>
@@ -23,7 +23,8 @@
   export default {
     data() {
       return {
-        isLoading: false,
+        // cambiare a true dopo debug
+        isLoading: false, 
         url: "http://127.0.0.1:8000/api/v1/movies",
         movies: [],
         error: false,
@@ -37,10 +38,12 @@
     },
     methods: {
       fetchData() {
-        this.isLoading = true;
+        // cambiare a true dopo debug
+        this.isLoading = false;
         axios.get(this.url)
           .then(res => {
-            this.movies = res.data.response;
+            console.log(res.data.response.data);
+            this.movies = res.data.response.data;
             this.error = false;
             this.isLoading = false;
           })
@@ -53,6 +56,7 @@
     },
     mounted() {
       this.fetchData();
+      console.log(this.movies.data);
     }
   };
   </script>
