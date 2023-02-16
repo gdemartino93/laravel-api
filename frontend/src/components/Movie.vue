@@ -14,11 +14,19 @@
              <span class="fw-bold text-info">Genre:</span>
              <span>{{ movie.genre.name }}</span>
          </div>
+         <div>
+             <span class="fw-bold text-info">Tags:</span>
+             <ul>
+                <li v-for="tagMovie in movie.tag">
+                    {{tagMovie.name}}
+                </li>
+            </ul>
+         </div>
          <div class="d-flex gap-2 align-items-center">
-             <a href="">
+            <a :href="'http://127.0.0.1:8000/movies/delete/' + movie.id">
                  <i class="fa-regular fa-square-minus text-danger"></i>
              </a>
-             <a href="">
+             <a :href="'http://127.0.0.1:8000/movies/edit/' + movie.id">
                  <i class="fa-solid fa-pen-to-square text-warning"></i>
              </a>
          </div>
@@ -40,5 +48,10 @@ span{
 }
 h3{
     color: white;
+}
+li{
+    color: white;
+    font-weight: bold;
+    list-style: circle;
 }
 </style>
