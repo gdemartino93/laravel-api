@@ -2,7 +2,7 @@
     <div>
         <h1 class="text-danger">Film</h1>
         <div v-for="(movie,index) in movies" :key="index">
-        <Movie  />
+        <Movie :movie="movie"  />
         <!-- <span>{{ movie.name }}</span> -->
         </div>
     </div>

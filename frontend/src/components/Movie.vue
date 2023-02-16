@@ -1,18 +1,18 @@
 <template>
     
     <article class="myItem d-flex flex-column">
-         <h3 class="fw-bold"></h3>  
+         <h3 class="fw-bold">{{ movie.name }}</h3>  
          <div>
-             <span class="fw-bold text-info">Description:</span>
-             <span></span>
+             <span class="fw-bold text-info">Date:</span>
+             <span>{{ movie.date }}</span>
          </div>
          <div>
-             <span class="fw-bold text-info">Price:</span>
-             <span> &euro;</span>
+             <span class="fw-bold text-info">Cashout:</span>
+             <span>{{ movie.cashOut }} &euro;</span>
          </div>
          <div>
              <span class="fw-bold text-info">Genre:</span>
-             <span></span>
+             <span>{{ movie.genre.name }}</span>
          </div>
          <div class="d-flex gap-2 align-items-center">
              <a href="">
@@ -27,10 +27,15 @@
 
 <script>
     export default {
-        
+      
+        props : {
+            movie : Object
+        }
     }
 </script>
 
-<style scoped>
-
+<style>
+span{
+    color: white;
+}
 </style>
