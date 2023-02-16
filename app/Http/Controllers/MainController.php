@@ -24,7 +24,7 @@ class MainController extends Controller
     public function create(){
         $genres = Genre :: all();
         $tags = Tag :: all();
-        return view('pages.movie.createnew',compact('genres','tags'));
+        return view('pages.createnew',compact('genres','tags'));
 
     }
     public function store(Request $request){
@@ -52,7 +52,7 @@ class MainController extends Controller
         $genres = Genre :: all();
         $tags = Tag :: all();
         
-        return view('pages.movie.edit', compact('genres','tags','movie'));
+        return view('pages.edit', compact('genres','tags','movie'));
     }
     public function update(Request $request , Movie $movie){
         $data = $request -> validate([
