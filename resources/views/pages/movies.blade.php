@@ -26,7 +26,7 @@
                         <a href="">
                             <i class="fa-regular fa-square-minus text-danger"></i>
                         </a>
-                        <a href="">
+                        <a href="{{route('movie.edit' , $movie)}}">
                             <i class="fa-solid fa-pen-to-square text-warning"></i>
                         </a>
                     </div>

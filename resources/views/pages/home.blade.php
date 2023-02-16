@@ -19,6 +19,14 @@
                         <span class="fw-bold text-info">Year:</span>
                         <span>{{$movie -> date}} </span>
                     </div>
+                    <div class="d-flex gap-2 align-items-center">
+                        <a href="">
+                            <i class="fa-regular fa-square-minus text-danger"></i>
+                        </a>
+                        <a href="{{route('movie.edit' , $movie)}}">
+                            <i class="fa-solid fa-pen-to-square text-warning"></i>
+                        </a>
+                    </div>
                 </div>
             @endforeach
   

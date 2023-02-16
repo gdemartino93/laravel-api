@@ -45,6 +45,14 @@ class MainController extends Controller
 
         $movie-> save();
   
-        return redirect()-> route('home');
+        return redirect()-> route('movies');
+    }
+    public function edit(Movie $movie){
+     
+        $genres = Genre :: all();
+        $tags = Tag :: all();
+        
+
+        return view('pages.movie.edit', compact('genres','tags','movie'));
     }
 }
