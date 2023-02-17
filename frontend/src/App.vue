@@ -19,7 +19,6 @@ export default{
   </header>
   <main>
     <AppMain />
-    zxc
   </main>
 
 </template>
