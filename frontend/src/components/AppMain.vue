@@ -5,8 +5,15 @@
         <div v-for="(movie, index) in movies" :key="index">
             <Movie :movie="movie" />
         </div>
-        <div class="col-12 d-flex justify-content-center">
-            <button class="btn btn-warning" @click="loadMore()">Load More</button>
+        <div class="col-12 d-flex justify-content-center align-items-center my-3 gap-5">
+            <!-- se è alla prima pagina nascondilo -->
+            <a @click="prevPage()" :class="currentPage ===  1 ? 'd-none' : 'd-block'">
+                <i class="fa-solid fa-hand-point-left"></i>
+            </a>
+            <!-- se è all'ultima pagina nascondilo -->
+            <a @click="nextPage()" :class="currentPage + 1 > lastPage ? 'd-none' : 'd-block'">
+                <i class="fa-regular fa-hand-point-right"></i>ù7a
+            </a>
         </div>
       </div>
       <div v-else>
@@ -33,6 +40,7 @@
         error: false,
         fullPage: true,
         currentPage :1 ,
+        lastPage : undefined
 
       };
     },
@@ -62,10 +70,16 @@
             this.isLoading = false;
           });
       },
-      loadMore(){
+      nextPage(){
         
         this.currentPage = this.currentPage + 1;
         // nuova chiamata Api con current page +1 
+        this.fetchData();
+      },
+      prevPage(){
+        
+        this.currentPage = this.currentPage - 1;
+        // nuova chiamata Api con current page -1 
         this.fetchData();
       }
 
@@ -79,5 +93,12 @@
   </script>
   
   <style lang="scss" scoped>
+  a{
+    color: black;
+  }
+  i{
+    font-size: 30px;
+    color: cornflowerblue;
+  }
   </style>
   
