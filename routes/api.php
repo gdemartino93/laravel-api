@@ -20,3 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route :: get('/v1/movies', [ApiController :: class, 'allMovies']);
+
+Route ::get('v1/movies/create', [ApiController :: class,'storePage']);

@@ -1,4 +1,36 @@
 <template>
+
+    <form  method="POST" class="col-12 col-md-8 col-lg-4 mx-auto py-4">
+   
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+                <input type="text" class="form-control" name="name">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Year</span>
+                <textarea  type="text-area" class="form-control" name="year" ></textarea>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">CashOut</span>
+                <input type="number" class="form-control" min="0" max="5" name="cashOut">
+            </div>
+
+            <div class="input-group mb-3">
+                <select name="genre_id" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                    <option selected>Select genre:</option>
+                    <option >lista gener</option>
+                </select>
+            </div>
+            <div>
+        <input type="checkbox" >
+        <label ></label>
+      </div>
+
+
+            <button class="btn btn-success" type="submit">Add </button>
+
+
+        </form>
     <div>
       <h1 class="text-danger">Film</h1>
       <div v-if="error === false">
