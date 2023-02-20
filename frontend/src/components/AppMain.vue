@@ -23,13 +23,13 @@
                     <input type="number" class="form-control" min="0" max="5" name="cashOut" v-model="cashOut">
                 </div>
                 <div class="input-group mb-3">
-                    <select name="genre_id" class="form-select" id="floatingSelect" aria-label="Floating label select example" v-model="genre_id">
+                    <select name="genre_id" class="form-select" id="floatingSelect" aria-label="Floating label select example" v-model="genre_id" >
                         <option selected >Select genre:</option>
-                        <option  >lista gener</option>
+                        <option v-for="genre in genres" :key="genre.id"  :value="genre.id"  >{{ genre.name }}</option>
                     </select>
                 </div>
                 <div v-for="tag in tags">
-                  <input type="checkbox" v-model="tag_id"   >
+                  <input type="checkbox" v-model="tag_id" :key="tag.id" :value="tag.id" >
                   <label >{{ tag.name }}</label>
                 </div>
                 <button class="btn btn-success" type="submit">Add </button>
@@ -97,6 +97,8 @@
         isLoading: false, 
         url: "http://127.0.0.1:8000/api/v1/movies?page=",
         movies: [],
+        tags : [],
+        genres : [],
         error: false,
         fullPage: true,
         currentPage :1 ,
@@ -106,7 +108,7 @@
         cashOut : undefined,
         tag_id : undefined,
         genre_id : undefined,
-        tags : []
+   
       };
     },
     components: {
@@ -120,15 +122,17 @@
         this.isLoading = false;
         axios.get(this.url + this.currentPage)
           .then(res => {
-    
+            // prendi i movies,tag e genres e mettili dentro l'array
             this.movies = res.data.movies.data;
+            this.tags = res.data.tags;
+            this.genres = res.data.genres;
+            // gestisci gli errori e il caricamento
             this.error = false;
             this.isLoading = false;
+            // gestisci la paginazione avanti e indietro
             this.currentPage = res.data.movies.current_page;
             this.lastPage = res.data.movies.last_page
-            console.log(this.lastPage);
-            this.tags = res.data.tags;
-            console.log(this.tags);
+      
    
           })
           .catch(err => {
@@ -138,19 +142,15 @@
           });
       },
       nextPage(){
-        
         this.currentPage = this.currentPage + 1;
         // nuova chiamata Api con current page +1 
         this.fetchData();
       },
       prevPage(){
-        
         this.currentPage = this.currentPage - 1;
         // nuova chiamata Api con current page -1 
         this.fetchData();
       },
-
-      
 
 
     },
