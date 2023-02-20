@@ -12,9 +12,13 @@ class ApiController extends Controller
 {
     public function allMovies(){
         $movies = Movie :: with('genre','tag') -> paginate(3);
+        $genres = Genre :: all();
+        $tags = Tag :: all();
         return response() -> json([
             'success' => true,
-            'response' => $movies
+            'movies' => $movies,
+            'genres' => $genres,
+            'tags' => $tags
         ]);
     }
         public function storePage(){
