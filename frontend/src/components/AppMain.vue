@@ -13,7 +13,7 @@ export default{
       tags : [],
       genres : [],
       // nuovo oggetto creato dal form
-      new_movie : emptyNewMovie,
+      new_movie : {...emptyNewMovie},
       // gestione form visibile
       isVisible : false
     }
@@ -47,13 +47,20 @@ export default{
         const success = data.success;
         const response = data.response;
         console.log(success);
-        if (success)
-          this.getMovie();
+        if (success){
+          this.getMovie();   
           this.isVisible = false;
-        
+          this.new_movie = {...emptyNewMovie};
+        }  
       })
       .catch(err => console.log(err))
     },  
+    editMovie(movie){
+;
+      this.new_movie = movie
+      console.log(this.new_movie);
+      // axios.post('edit/' + movie)
+    },
     deleteMovie(movie){
       axios.delete('delete/' + movie.id)
           .then(res => {
@@ -119,6 +126,7 @@ export default{
     <span @click="deleteMovie(movie)">
       <i class="fa-solid fa-trash"></i>
     </span>
+    <span @click="editMovie(movie)">EDIT</span>
 
   </div>
   

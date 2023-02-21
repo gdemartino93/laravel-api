@@ -43,6 +43,26 @@ class ApiController extends Controller
         'data' => $request -> all()
     ]);
    }
+   public function edit(Request $request , Movie $movie){
+    $data = $request -> validate([
+        'name' => 'required|max:32',
+        'date' => 'required|integer',
+        'cashOut' => 'required',
+        'genre_id' => 'required',
+        'tags_id' => 'required|array'
+    ]);
+    $genre = Genre :: find($data['genre_id']);
+    $movie -> update($data);
+    $movie -> genre()-> associate($genre);
+    $movie -> save();
+
+    return response() -> json([
+        'success' => true,
+        'response' => $movie,
+        'data' => $request -> all()
+    ]);
+
+   }
 
    public function delete(Movie $movie){
 
