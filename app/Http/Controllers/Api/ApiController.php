@@ -12,7 +12,7 @@ class ApiController extends Controller
 {
    public function index(){
 
-    $movies = Movie :: with('tag') ->get();
+    $movies = Movie :: with('tag') -> orderBy('created_at','DESC') ->get();
     $genres = Genre :: all();
     $tags = Tag :: all();
 

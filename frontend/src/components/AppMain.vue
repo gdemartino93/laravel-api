@@ -45,10 +45,12 @@ export default{
       .then(res=> {
         const data = res.data;
         const success = data.success;
-        // const response = data.response;
-        // if (success){
-        //   this.getMovie();
-        // }
+        const response = data.response;
+        console.log(success);
+        if (success)
+          this.getMovie();
+          this.isVisible = false;
+        
       })
       .catch(err => console.log(err))
     },  
