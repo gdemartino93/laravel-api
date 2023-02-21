@@ -5,7 +5,9 @@ axios.defaults.baseURL ="http://127.0.0.1:8000/api/v1/movie/"
 export default{
   data(){
     return{
-      movies : []
+      movies : [],
+      tags : [],
+      genres : []
     }
   },
   methods : {
@@ -14,8 +16,26 @@ export default{
           .then(res => {
             const data = res.data;
             const success = res.success;
-            this.movies = data.response;
+            this.movies = data.movies;
+            this.tags = data.tags;
+            this.genres = data.genres;
+
+            if(success){
+              this.movies = this.movies;
+              this.tags = this.tags;
+              this.genres = this.genres;
+            }
           })
+    },
+    deleteMovie(movie){
+      axios.post('delete/' + movie.id)
+          .then(res => {
+            const data = res.data;
+            const success = res.success;
+            
+            this.getMovie()            
+          })
+          .catch(err => console.log(err))
     }
   },
   mounted(){
@@ -31,6 +51,9 @@ export default{
     <h4 >Name: {{ movie.name }}</h4>
     <span>Date: {{ movie.date }}</span>
     <span>Cashout: {{ movie.cashOut }} &euro;</span>
+    <span @click="deleteMovie(movie)">
+      <i class="fa-solid fa-trash"></i>
+    </span>
   </div>
   
 </template>
