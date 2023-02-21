@@ -51,6 +51,10 @@ export default{
       e.preventDefault()
       this.isVisible = !this.isVisible
     },  
+    closeForm(e){
+      e.preventDefault();
+      this.isVisible = false;
+    },
     submitMovie(e){
       e.preventDefault();
        
@@ -88,6 +92,7 @@ export default{
     </div> 
     <div>
       <button class="btn btn-success my-3" type="submit">Add</button>
+      <button class="btn btn-danger" @click="closeForm">Close Form</button>
     </div>
   </form>
   
