@@ -31,9 +31,11 @@ export default{
       axios.delete('delete/' + movie.id)
           .then(res => {
             const data = res.data;
-            const success = res.success;
-            
-            this.getMovie()            
+            const success = data.success;
+            if (success){
+              this.getMovie()            
+            }
+        
           })
           .catch(err => console.log(err))
     }
@@ -46,7 +48,19 @@ export default{
 </script>
 
 <template>
-  <h1>Movies:</h1>
+  <form action="" method="POST" class="d-flex flex-column col-4 mx-auto">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="" v-model="name">
+    <label for="year">Year</label>
+    <input type="number" name="year" id="">
+    <label for="cashout">CashOut</label>
+    <input type="number" name="cashout" id="">
+    <br>
+    <select name="genre_id" class="my-3">
+      <option value="" v-for="genre in genres" id="genres">{{ genre.name }}</option>
+    </select>
+  </form>
+  <h1 class="text-success">Movies:</h1>
   <div v-for="movie in movies" class="d-flex flex-column col-6 myItem" :key="movie.id">
     <h4 >Name: {{ movie.name }}</h4>
     <span>Date: {{ movie.date }}</span>
@@ -54,6 +68,9 @@ export default{
     <span @click="deleteMovie(movie)">
       <i class="fa-solid fa-trash"></i>
     </span>
+    <div>
+      <button class="btn btn-success">Add</button>
+    </div>
   </div>
   
 </template>
@@ -61,7 +78,13 @@ export default{
 
 
 <style lang="scss" scoped>
-*{
+.myItem{
+  color: white;
+}
+#genres{
+  color: black;
+}
+form{
   color: white;
 }
 </style>
