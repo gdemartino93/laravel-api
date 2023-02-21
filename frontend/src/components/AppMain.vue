@@ -28,7 +28,7 @@ export default{
           })
     },
     deleteMovie(movie){
-      axios.post('delete/' + movie.id)
+      axios.delete('delete/' + movie.id)
           .then(res => {
             const data = res.data;
             const success = res.success;
