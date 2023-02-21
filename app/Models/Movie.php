@@ -10,7 +10,7 @@ class Movie extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'year',
+        'date',
         'cashOut'
     ];
     public function tag(){

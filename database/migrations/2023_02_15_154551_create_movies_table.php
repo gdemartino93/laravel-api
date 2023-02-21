@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table -> string('name',32);
-            $table -> year('date') ->nullable();
+            $table -> year('date');
             $table -> integer('cashOut',false,false);
 
             $table->timestamps();

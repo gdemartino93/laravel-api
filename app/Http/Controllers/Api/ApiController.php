@@ -23,6 +23,27 @@ class ApiController extends Controller
         'tags' => $tags
     ]);
    }
+   public function store(Request $request){
+    $data = $request -> validate([
+        'name' => 'unique:movies|required|max:32',
+        'date' => 'required|integer',
+        'cashOut' => 'required',
+        'genre_id' => 'required',
+        'tags_id' => 'required|array'
+    ]);
+    $genre = Genre :: find($data['genre_id']);
+    $movie = Movie :: make($data);
+
+    $movie -> genre() -> associate($genre);
+    $movie -> save();
+
+    return response() -> json([
+        'success' => true,
+        'response' => $movie,
+        'data' => $request -> all()
+    ]);
+   }
+
    public function delete(Movie $movie){
 
     $movie ->tag()->sync([]);

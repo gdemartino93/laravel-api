@@ -35,6 +35,23 @@ export default{
             }
           })
     },
+    storeMovie(e){
+      e.preventDefault();
+  
+      const newMovie = this.new_movie;
+      console.log(newMovie);
+
+      axios.post('store', newMovie)
+      .then(res=> {
+        const data = res.data;
+        const success = data.success;
+        // const response = data.response;
+        // if (success){
+        //   this.getMovie();
+        // }
+      })
+      .catch(err => console.log(err))
+    },  
     deleteMovie(movie){
       axios.delete('delete/' + movie.id)
           .then(res => {
@@ -55,10 +72,6 @@ export default{
       e.preventDefault();
       this.isVisible = false;
     },
-    submitMovie(e){
-      e.preventDefault();
-       
-    }
   },
   mounted(){
     this.getMovie();
@@ -71,27 +84,27 @@ export default{
         <a href="" @click="showForm">
             <i class="fa-solid fa-plus fs-2"></i>
         </a>
-      <form v-if="isVisible === true" action="" method="POST" class="d-flex flex-column col-4 mx-auto">
+      <form v-if="isVisible === true" action=""  class="d-flex flex-column col-4 mx-auto">
     <label for="name">Name</label>
-    <input type="text" name="name" id="" v-model="new_movie.name">
-    <label for="year">Year</label>
-    <input type="number" id="" v-model="new_movie.year">
-    <label for="cashout">CashOut</label>
-    <input type="number" name="cashout" id="" v-model="new_movie.cashout">
+    <input type="text" name="name"  v-model="new_movie.name">
+    <label for="date">Year</label>
+    <input type="number" name="date" v-model="new_movie.date">
+    <label for="cashOut">CashOut</label>
+    <input type="number" name="cashOut"  v-model="new_movie.cashOut">
     <br>
     <label for="genre_id">Genre:</label>
     <br>
-    <select name="genre_id" class="my-3" v-model="new_movie.genre">
-      <option v-for="genre in genres" :value="genre.id" key="genre.id"  >{{ genre.name }}</option>
+    <select name="genre_id" class="my-3" v-model="new_movie.genre_id">
+      <option v-for="genre in genres" :value="genre.id" :key="genre.id"  >{{ genre.name }}</option>
     </select>
     <span>TAG:</span>
       <br>
-    <div v-for="tag in tags" key="tag.id">
+    <div v-for="tag in tags" :key="tag.id">
       <input type="checkbox" name="" :id="tag.id" :value="tag.id" v-model="new_movie.tags_id">
-      <label for="{{ tag.id }}">{{ tag.name }}</label>
+      <label :for="tag.id">{{ tag.name }}</label>
     </div> 
     <div>
-      <button class="btn btn-success my-3" type="submit">Add</button>
+      <button class="btn btn-success my-3" type="submit" @click="storeMovie">Add</button>
       <button class="btn btn-danger" @click="closeForm">Close Form</button>
     </div>
   </form>

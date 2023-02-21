@@ -39,7 +39,7 @@ class MainController extends Controller
 
         $movie = Movie:: make($data);
 
-        $genre = Genre:: find($data['genre']);
+        $genre = Genre:: find($data['genre_id']);
  
         $movie -> genre()-> associate($genre);
 
