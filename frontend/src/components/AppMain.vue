@@ -56,7 +56,6 @@ export default{
       .catch(err => console.log(err))
     },  
     editMovie(movie){
-;
       this.new_movie = {...movie};
       this.isVisible = true;
       this.new_movie.tags_id = [];

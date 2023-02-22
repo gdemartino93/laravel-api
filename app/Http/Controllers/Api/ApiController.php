@@ -56,6 +56,12 @@ class ApiController extends Controller
     $movie -> genre()-> associate($genre);
     $movie -> save();
 
+    if (array_key_exists('tags_id', $data)) {
+
+        $tags = Tag :: find($data['tags_id']);
+        $movie -> tags() -> sync($tags);
+    }
+
     return response() -> json([
         'success' => true,
         'response' => $movie,
