@@ -60,8 +60,8 @@ export default{
       this.isVisible = true;
       this.new_movie.tags_id = [];
       console.log("movie.tag" + this.new_movie);
-      for (let x = 0 ; x < movie.tags.length; x++){
-        const tag = movie.tags[x];
+      for (let x = 0 ; x < movie.tag.length; x++){
+        const tag = movie.tag[x];
         this.new_movie.tags_id.push(tag.id)
       }
     },
@@ -119,6 +119,7 @@ export default{
           <div>
             <button class="btn btn-success my-3" type="submit" @click="storeMovie">Add</button>
             <button class="btn btn-danger" @click="closeForm">Close Form</button>
+            <button class="btn btn-info">edit</button>
           </div>
       </form>
       

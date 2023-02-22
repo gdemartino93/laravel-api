@@ -58,7 +58,7 @@ class ApiController extends Controller
 
     if (array_key_exists('tags_id', $data)) {
 
-        $tags = Tag :: find($data['tags_id']);
+        $tags = Tag :: find($data['tag_id']);
         $movie -> tags() -> sync($tags);
     }
 
